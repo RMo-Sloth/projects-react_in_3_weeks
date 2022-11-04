@@ -8,6 +8,11 @@ export const Menu = () => {
   }, []);
   console.log({menuItems});
   const menuItem = menuItems?.[0] || {};
+
+  function addToCart(menuItem) {
+    console.log(`Adding ${menuItem.name} to the cart`);
+  }
+
   return (
     <>
       <h1>Menu</h1>
@@ -21,7 +26,7 @@ export const Menu = () => {
             <p>{menuItem.description}</p>
             <p>{toCurrency(menuItem.price)}</p>
             <div>
-              <button>Add</button>
+              <button onClick={() => {addToCart(menuItem)}}>Add</button>
             </div>
           </div>
         </section>

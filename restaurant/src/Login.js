@@ -1,5 +1,10 @@
 export default function Login() {
     console.log( "login" );
+
+    function login(){
+        console.log( "LOgging in" );
+    }
+
     return (
         <>
             <h1>Login</h1>
@@ -7,7 +12,7 @@ export default function Login() {
             <input/>
             <label>Password</label>
             <input type="text"/>
-            <button>Log in</button>
+            <button onClick={login}>Log in</button>
             <a href="/register">register</a>
         </>
     )

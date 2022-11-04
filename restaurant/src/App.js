@@ -1,5 +1,5 @@
 import Login from './Login';
-import { Menu } from './Menu';
+import { Cart } from './Cart';
 
 export function App() {
   return (
@@ -9,7 +9,7 @@ export function App() {
         </nav>
       </header>
       <main>
-        <Menu />
+        <Login />
       </main>
       <footer></footer>
     </>

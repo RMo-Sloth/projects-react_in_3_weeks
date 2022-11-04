@@ -1,5 +1,10 @@
 export function Cart() {
     console.log("Cart");
+
+    function place_order() {
+      console.log( "Placint an order!" );
+    }
+
     return (
         <>
           <h1>Cart</h1>
@@ -33,7 +38,7 @@ export function Cart() {
             <input type="number" id="expiryYear" required />
             <label htmlFor="cvv">CVV</label>
             <input id="cvv" required />
-            <button>Place order</button>
+            <button onClick={place_order}>Place order</button>
           </section>
         </>
       );
