@@ -1,8 +1,5 @@
-import { Orders } from './Orders';
-import { Cart } from './Cart';
-import { Order } from './Order';
-import Register from './Register';
 import Login from './Login';
+import { Menu } from './Menu';
 
 export function App() {
   return (
@@ -12,11 +9,7 @@ export function App() {
         </nav>
       </header>
       <main>
-        <Orders />
-        <Order />
-        <Register />
-        <Cart />
-        <Login />
+        <Menu />
       </main>
       <footer></footer>
     </>

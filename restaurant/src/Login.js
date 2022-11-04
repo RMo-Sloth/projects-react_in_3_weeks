@@ -3,6 +3,12 @@ export default function Login() {
     return (
         <>
             <h1>Login</h1>
+            <label>Username</label>
+            <input/>
+            <label>Password</label>
+            <input type="text"/>
+            <button>Log in</button>
+            <a href="/register">register</a>
         </>
     )
 }
