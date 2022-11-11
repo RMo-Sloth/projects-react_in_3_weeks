@@ -1,11 +1,5 @@
 import Chance from 'chance';
 import fs from 'fs';
-String.prototype.toTitleCase = function () { return this.charAt(0).toLocaleUpperCase() + this.substring(1) };
-
-// Setup
-const chance = Chance.Chance();
-const foodImageFiles = fs.readdirSync('./public/images');
-const db = {};
 
 // Config values
 const dbFileName = "./database.json";
@@ -15,15 +9,28 @@ const howManyMenuItems = 20;
 const startingOrderId = 20123;
 const howManyOrders = 200;
 
+// Utility functions
+String.prototype.toTitleCase = function () { return this.charAt(0).toLocaleUpperCase() + this.substring(1) };
+const loadFromJSON = (filename) => JSON.parse(fs.readFileSync(filename));
+
+// Setup
+const chance = Chance.Chance();
+const foodImageFiles = fs.readdirSync('./public/images');
+const initialMenuItems = loadFromJSON('./initial_data/menuItems.json');
+const initialUsers = loadFromJSON('./initial_data/users.json');
+const db = {};
+
 // Create some users
 db.users = [];
+db.users.push(...initialUsers);
 for (let i = startingUserId; i <= startingUserId + howManyUsers; i++) {
   db.users.push(makeRandomUser(i))
 }
 
 // Create menu items
 db.menuItems = []
-for (let i = 1; i <= howManyMenuItems; i++) {
+db.menuItems.push(...initialMenuItems);
+for (let i = db.menuItems.length + 1; i <= howManyMenuItems; i++) {
   db.menuItems.push(makeMenuItem(i));
 }
 
@@ -72,7 +79,7 @@ function makeOldOrder(id) {
 }
 
 function makeMenuItem(id) {
-  const categories = ["entrees", "appetizers", "desserts", "drinks"];
+  const categories = ["entrees", "appetizers", "desserts", "beverages"];
   const menuItem = {
     id,
     name: `${chance.word().toTitleCase()} ${chance.word().toTitleCase()}`,
@@ -98,12 +105,12 @@ function makeRandomUser(id = 0) {
   const person = {
     id,
     username: `${first.charAt(0).toLowerCase()
-      }.${last.toLowerCase()} `,
+      }.${last.toLowerCase()}`,
     password: chance.word(),
     first,
     last,
     phone: chance.phone(),
-    email: `${first.toLowerCase()}.${last.toLowerCase()} @example.com`,
+    email: `${first.toLowerCase()}.${last.toLowerCase()}@example.com`,
     imageUrl: `https://minimaltoolkit.com/images/randomdata/${gender}/${randomImageNumber}.jpg`,
     creditCard: card,
     adminUser: false,
