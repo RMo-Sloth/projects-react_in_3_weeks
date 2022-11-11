@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Login() {
     console.log( "login" );
 
@@ -13,7 +15,7 @@ export default function Login() {
             <label>Password</label>
             <input type="text"/>
             <button onClick={login}>Log in</button>
-            <a href="/register">register</a>
+            <Link to="/register">register</Link>
         </>
     )
 }

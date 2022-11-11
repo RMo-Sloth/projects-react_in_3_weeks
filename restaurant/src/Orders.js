@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 export function Orders() {
+    const navigate = useNavigate();
     console.log("Orders");
     return (
         <>
@@ -13,7 +16,7 @@ export function Orders() {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr onClick={() => navigate(`/orders/12345`)}>
                 <td>ORDER_ID_HERE</td>
                 <td>ORDER_TIME_HERE</td>
                 <td>ORDER_TOTAL_HERE</td>

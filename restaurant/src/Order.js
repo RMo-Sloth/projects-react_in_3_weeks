@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 export function Order() {
-    console.log("Order");
+    const { orderId } = useParams();
+    console.log("Order", orderId);
     return (
         <>
           <h1>This is your order </h1>
