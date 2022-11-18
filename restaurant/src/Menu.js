@@ -3,8 +3,9 @@ import { getMenuItems, toCurrency } from './utilities';
 export const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
-    getMenuItems()
-      .then(mi => setMenuItems(mi))
+    fetch(`/api/menuItems`)
+      .then(res => res.json())
+      .then( setMenuItems )
   }, []);
   console.log({menuItems});
   const menuItem = menuItems?.[0] || {};

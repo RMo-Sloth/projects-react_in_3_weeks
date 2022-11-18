@@ -1,6 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { getOrders } from './utilities';
+import {useEffect} from 'react';
 
 export function Orders() {
+      useEffect(() => {
+        getOrders();
+    }, []);
     const navigate = useNavigate();
     console.log("Orders");
     return (

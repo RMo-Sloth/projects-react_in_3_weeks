@@ -6,8 +6,42 @@ import { Order } from './Order';
 import { Orders } from './Orders'
 import Register from './Register';
 import NotFound from './NotFound';
+import { useState, useEffect } from 'react';
+import { getNextCartItemId } from './utilities';
 
 export function App() {
+  const [cart, setCart] = useState([]);
+  const [user, setUser] = useState({});
+  console.log({ cart });
+
+  useEffect(() => {
+    addToCart({
+        id: 17,
+        name: "Test item 1",
+        category: "entrees",
+        price: 10.54,
+      });
+  }, []);
+
+  // Converts a menuItem to a cartItem and adds it to the cart.
+  function addToCart(menuItem) {
+    const cartItem = {
+      ...menuItem,
+      itemId: menuItem.id,
+      id: getNextCartItemId(cart),
+    };
+    setCart([...cart, cartItem]);
+  }
+  // Removes the provided item from the cart
+  function removeFromCart(cartItem) {
+    setCart(cart.filter(oi => oi !== cartItem));
+  }
+  // Replaces an item in the cart. 
+  function changeCartItem(newCartItem) {
+    const newCart = cart.map(ci => ci.id === newCartItem.id ? newCartItem : ci);
+    setCart(newCart);
+  }
+
   return (
     <>
       <header id="pageHeader">

@@ -1,4 +1,16 @@
 export function Cart() {
+    const cart = [{
+      id: 1,
+      name: "Garden salad",
+      description: "Meal-sized portion. garden greens, tomatoes, peppers, celery, carrots",
+      category: "entrees",
+      price: 6.54,
+      imageUrl: "images/salad_1.jpg",
+      available: true,
+      itemId: 300
+    }]
+    const cartItem = cart[0];
+
     console.log("Cart");
 
     function place_order() {
@@ -9,9 +21,9 @@ export function Cart() {
         <>
           <h1>Cart</h1>
           <section className="cartItem">
-            <p>CART_ITEM_NAME_HERE</p>
-            <p>CART_ITEM_CATEGORY_HERE</p>
-            <p>CART_ITEM_PRICE_HERE</p>
+            <p>{ cartItem.name }</p>
+            <p>{ cartItem.category }</p>
+            <p>{ cartItem.price }</p>
             <p>for: <input /></p>
             <label>Special requests</label>
             <textarea></textarea>
